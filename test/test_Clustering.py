@@ -1,14 +1,21 @@
+import sys
+import os
 import pytest
-from model.clustering import preprocess_used_cars
 import pandas as pd
 
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from model.clustering import ClusteringModel
+
 def test_preprocess_used_cars():
+    # Test data with at least 3 rows (for 3 clusters)
     data = pd.DataFrame({
-        "region_label": ["A", "B"],
-        "avg_price": [20000, 25000],
-        "avg_mileage": [50000, 60000],
-        "vin": ["1", "2"]
+        "avg_price": [20000, 25000, 30000, 35000],
+        "avg_mileage": [50000, 60000, 70000, 80000]
     })
-    agg_data, scaler, kmeans = preprocess_used_cars(data)
-    assert len(agg_data) == 2
-    assert "cluster" in agg_data.columns
+    
+    clustering = ClusteringModel(n_clusters=3, random_state=42)  # Initialize model
+    agg_data = clustering.train(data, ["avg_price", "avg_mileage"])  # Train model
+    
+    assert len(agg_data) == 4  # Ensure all rows are clustered
+    assert "cluster" in agg_data.columns  # Check if 'cluster' column is added
