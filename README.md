@@ -29,6 +29,20 @@ The goal? Help dealerships make smarter, data-driven decisions on pricing, marke
 
 ```
 GoAuto Project/
+├── _pycache_/
+│   ├── predict_api.cpython-312.pyc
+├── .dvc/
+│   ├── cache/file
+|   ├── tmp
+│   ├── .gitignore 
+├── .ytest_cache/
+│   ├── v
+|   ├── .gitignore
+│   ├── CACHEDIR.TAG
+├── .venv/
+│   ├── bin
+|   ├── etc
+│   ├── include
 ├── app_files/            # Static files for the Streamlit app
 │   ├── Dealership-map.html
 │   └── image.png
@@ -40,15 +54,31 @@ GoAuto Project/
 │   └── new_cars.csv
 ├── docs/                 # Documentation
 ├── experiment/           # Experimental scripts or results
+├── grafana/
+│   ├── provisioning/
+|   |    ├── dashboards/
+|   |           ├──dashboard.yml
+|   |           ├── predict_api_dashboard.json
+│   |           ├── training_dashboard.json 
+│   |    ├──datasources/
+|   |            ├── prometheus.yml
+├── logs/
+│   ├── api.log
+|   ├── train.log
+├── mlartifacts
+├── mlflow-data
+├── mlruns
 ├── model/                # Model training, prediction, and clustering logic
 │   ├── clustering.py
 │   ├── prediction.py
 │   ├── checkpoints/
 │   ├── __init__.py
-│   ├── predict_api.py
 │   └── train.py
 ├── notebook/             # Jupyter notebooks for EDA and experimentation
 │   └── GoAuto.ipynb
+├── prometheus/
+|   ├── rules
+|   ├── prometheus.yml
 ├── src/                  # Main application logic
 │   ├── app.py
 │   ├── advanced_app.py
@@ -58,9 +88,14 @@ GoAuto Project/
 ├── test/                 # Unit tests
 │   ├── test_clustering.py
 │   └── test_prediction.py
-├── requirements.txt      # Python dependencies
-├── Makefile              # Automation for setup and tasks
+├── .dockerignore
+├── docker-compose.yml
+├── Dockerfile
+├── Dockerfile.mlflow
+├── makefile 
+├── predict_api.py             # Automation for setup and tasks
 └── README.md             # Project overview and instructions
+├── requirements.txt      # Python dependencies
 ```
 
 ---
